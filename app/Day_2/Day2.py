@@ -1,37 +1,40 @@
-from app.file_paths import day2_file
+from app.file_paths import day2_file as file
+# -------------------------------------------------------------------------------------------------------
+# Function to read text file
+
+
+def read_file(path):
+    with open(path, 'r') as day_2:
+        lines = [line.rstrip() for line in day_2]
+        new_lines = []
+        chars = ['-', ':']
+        for line in lines:
+            for char in chars:
+                line = line.replace(char, ' ')
+            line = line.split(" ")
+            new_lines.append(line)
+    return new_lines
 # -------------------------------------------------------------------------------------------------------
 # Day 2 part 1
 
 
 def valid_passwords():
-    day_2 = open(day2_file, 'r')
-    number = 0
-    for line in day_2:
-        line = line.rstrip()
-        chars = ['-', ':']
-        for char in chars:
-            line = line.replace(char, ' ')
-        line = line.split(" ")
+    number_of_valid_passwords = []
+    for line in read_file(file):
         count = line[4].count(line[2])
+        counter = 0
         if int(line[0]) <= count <= int(line[1]):
-            number += 1
-    #print(number)
-    return number
-
-
+            counter += 1
+        if counter == 1:
+            number_of_valid_passwords.append(counter)
+    return len(number_of_valid_passwords)
 # -------------------------------------------------------------------------------------------------------
 # Day 2 part 2
 
 
 def password_count():
-    day_2 = open(day2_file, 'r')
     valid_password = []
-    for line in day_2:
-        line = line.rstrip()
-        chars = ['-', ':']
-        for char in chars:
-            line = line.replace(char, ' ')
-        line = line.split(" ")
+    for line in read_file(file):
         v1, v2 = int(line[0]), int(line[1])
         count = 0
         if line[4][v1-1] == line[2]:
@@ -41,8 +44,4 @@ def password_count():
         if count == 1:
             valid_password.append(count)
     return len(valid_password)
-
-
-
-
 
