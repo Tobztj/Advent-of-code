@@ -3,6 +3,7 @@
 from app.Day_1.Day1 import *
 from app.Day_2.Day2 import *
 from app.Day_3.Day3 import *
+from app.Day_4.Day4 import *
 
 
 def run():
@@ -15,3 +16,6 @@ def run():
     print(f'Day 3: \n'
           f'Part 1 --> There are {number_of_trees()} trees \n'
           f'Part 2 --> The product of the number of trees for each slope is {multiple_trees()}')
+    print(f'Day 4:\n'
+          f'Part 1 --> There are {len(valid_passport)} valid passports \n'
+          f'Part 2 --> There are {len(validated_passports)} fully validated passports')
