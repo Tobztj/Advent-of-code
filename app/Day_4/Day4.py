@@ -49,7 +49,9 @@ def is_valid_passport(each_passport):
     )
 
 
-valid_passport = [passport for passport in all_passports() if is_valid_passport(passport)]
+def total_passports():
+    valid_passport = [passport for passport in all_passports() if is_valid_passport(passport)]
+    return len(valid_passport)
 # -------------------------------------------------------------------------------------------------------
 # Day 4 Part 2
 
@@ -91,4 +93,7 @@ def valid_fields(passports):
             )
 
 
-validated_passports = [passport for passport in valid_passport if valid_fields(passport)]
+def total_valid_passports():
+    valid_passport = [passport for passport in all_passports() if is_valid_passport(passport)]
+    validated_passports = [passport for passport in valid_passport if valid_fields(passport)]
+    return len(validated_passports)
